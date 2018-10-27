@@ -1,3 +1,14 @@
+<?php 
+	//configura qual página vai ser carregada
+	$pagina = 'home';
+	if (isset($_GET['param']))
+	{
+		$param = trim ($_GET['param']);
+		$param = explode("/",$param);
+		$pagina = $param[0];
+	}
+	$arquivo = $pagina.".js";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +33,7 @@
     <script src="js/jquery.cycle2.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/funcoes.js"></script>
-    <script src="js/home.js"></script>
+    <script src="js/<?=$arquivo?>"></script>
 
 </head>
     <body>

@@ -56,3 +56,26 @@ function preencherCategoria(dados){
 	//apagar msg do #msg
 	$("#msg").html('');
 }
+
+//function pegar id
+function retornaId() {
+	pagina = window.location.href
+	p = pagina.split("/")
+	return p[6]
+}
+
+//funcao para preencher os produtos
+function preencherProdutos(dados) {
+	$(".produto").html("");
+	$.each(dados, function (key,val) {
+		$(".produto").append(`
+			<div class='col l3 m6 s12 center-align'>
+				<div class='card'>
+				<img src='${val.foto}' class='responsive-img'>
+				<p>${val.nome}</p>
+				<p class='valor'>R$ ${val.valor}</p>
+				<a href='produto/${val.id}' class='btn red darken-4'>Detalhes</a>
+				</div>
+			</div>`);
+	});
+}

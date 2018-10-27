@@ -15,16 +15,35 @@
 		$op = trim ($_GET['op']);
 	}
 
-	if ($op == 'produto')
-	{
+	// op= produto, categoria
 
-	} else if ( $op == 'categoria')
-	{
+	if ($op == 'produto') {
+		//produto específico
+		$id = trim ($_GET['id']);
+		echo $id;
+		$consulta = $pdo->prepare('	
+							select p.*, c.categoria
+							from produto p
+							inner join categoria c on (c.id = p.categoria_id)
+							where p.id = ? limit 1');
+		$consulta->bindParam(1,$id);
 
-	} else
-	{
+
+	} else if ( $op == 'categoria')	{
+		//produtos de uma categoria
+		$id = trim ($_GET['id']);
+		$consulta = $pdo->prepare('	
+							select p.*, c.categoria
+							from produto p
+							inner join categoria c on (c.id = p.categoria_id)
+							where p.categoria_id = ?');
+		
+		$consulta->bindParam(1,$id);
+
+	} else {
 		// produtos da página inicial
-		$consulta = $pdo->prepare('	select p.*, c.categoria
+		$consulta = $pdo->prepare('	
+									select p.*, c.categoria
 									from produto p
 									inner join categoria c on (c.id = p.categoria_id)
 									order by rand() limit 4');
