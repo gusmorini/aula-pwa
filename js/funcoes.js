@@ -1,33 +1,58 @@
 $(document).ready(function(){
 
-	$(".load").fadeOut("slow", function(){
+	$(".load").fadeOut("slow", function()
+	{
 		$(".load").hide()
 	})
 
-	//importas as categorias do JSON
-	$.getJSON("json/categoria.php", function(){
+	dadosCategoria = localStorage.getItem("categorias")
 
-		$("#msg").html("<p> <img src='imagens/load.gif'>  Carregando categorias... </p>")
+	if (dadosCategoria) {
+		//se existir algo no storage
+		console.log('categorias do cache')
 
-	}).done(function(dados){
+		dados = JSON.parse(dadosCategoria)
 
-		//deu certo devolve os dados
-		$.each(dados, function( key, val ){
-			$("#mobile-demo, #menu").prepend(`
-				<li>
-					<a href="categoria/${val.id}">${val.categoria}</a>
-				</li>
-			`)
+		//função preencher o menu
+		preencherCategoria(dados)
+	}
+	else {
+		//se não existir nada no storage
+		console.log('categorias do JSON')
+
+		//importar as categorias do JSON
+		$.getJSON("json/categoria.php", function()
+		{
+			$("#msg").html("<p> <img src='imagens/load.gif'>  Carregando categorias... </p>")
+		}).done(function(dados)
+		{
+			//deu certo devolve os dados
+
+			cache = JSON.stringify(dados)
+
+			//guardar dados no cache
+			localStorage.setItem('categorias', cache);
+
+			//função preencher o menu
+			preencherCategoria(dados)
+
+		}).fail(function(){
+			//erro ao carregar os dados
+			$("#msg").html("<p>Erro ao carregar categorias")
 		})
+	}
 
-		//apagar msg do #msg
-		$("#msg").html('');
+}) // document.ready
 
-	}).fail(function(){
-
-		//erro ao carregar os dados
-		$("#msg").html("<p>Erro ao carregar categorias")
-
+// função preencher categorias
+function preencherCategoria(dados){
+	$.each(dados, function( key, val ){
+		$("#mobile-demo, #menu, #footer").prepend(`
+			<li>
+				<a href="categoria/${val.id}">${val.categoria}</a>
+			</li>
+		`)
 	})
-
-})
+	//apagar msg do #msg
+	$("#msg").html('');
+}

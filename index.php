@@ -22,6 +22,7 @@
     <script src="js/jquery.cycle2.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/funcoes.js"></script>
+    <script src="js/home.js"></script>
 
 </head>
     <body>
@@ -55,7 +56,33 @@
 
 		<main class="container">
 			<div id="msg"></div>
+
+			<h1></h1>
+			<div class="row produto"></div>
+
 		</main>
+
+		<footer class="page-footer">
+		  <div class="container">
+		    <div class="row">
+		      <div class="col l6 s12">
+		        <h5 class="white-text">Sub Sub Marino</h5>
+		        <p class="grey-text text-lighten-4">Sua Loja de La Paloma</p>
+		      </div>
+		      <div class="col l4 offset-l2 s12">
+		        <h5 class="white-text">Links</h5>
+		        <ul id="footer">
+		        </ul>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="footer-copyright">
+		    <div class="container">
+		    © 2018 Copyright Text
+		    <a class="grey-text text-lighten-4 right" href="#!">La Paloma Systems</a>
+		    </div>
+		  </div>
+		</footer>
 
     </body>
 </html>
