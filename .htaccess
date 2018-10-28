@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{_FILENAME} !-f
+RewriteCond %{_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?param=$1
