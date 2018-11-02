@@ -61,7 +61,8 @@ function preencherCategoria(dados){
 function retornaId() {
 	pagina = window.location.href
 	p = pagina.split("/")
-	return p[6]
+	console.log("id: " + p[5])
+	return p[5]
 }
 
 //funcao para preencher os produtos
