@@ -1,8 +1,7 @@
 <?php 
 	//configura qual página vai ser carregada
 	$pagina = 'home';
-	if (isset($_GET['param']))
-	{
+	if (isset($_GET['param'])) {
 		$param = trim ($_GET['param']);
 		$param = explode("/",$param);
 		$pagina = $param[0];
@@ -19,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- definir a pasta base do projeto -->
-    <base href="http://192.168.33.10/html/webdev-pwa/">
+    <base href="http://localhost/aula-pwa/">
     
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
