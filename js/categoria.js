@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	id = retornaId()
+	id = retornaId(5)
 
 	produtos = localStorage.getItem("categoria"+id)
 
@@ -20,7 +20,5 @@ $(document).ready(function(){
 			$(".produto").html("Erro ao carregar produtos")
 		})
 	}
-
-	
 
 })

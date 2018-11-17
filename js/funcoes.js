@@ -1,9 +1,13 @@
 $(document).ready(function(){
 
+	//mascara de carregamento
 	$(".load").fadeOut("slow", function()
 	{
 		$(".load").hide()
 	})
+
+	//acionar menu responsivo
+	$(".sidenav").sidenav()
 
 	dadosCategoria = localStorage.getItem("categorias")
 
@@ -58,11 +62,11 @@ function preencherCategoria(dados){
 }
 
 //function pegar id
-function retornaId() {
+function retornaId(pos) {
 	pagina = window.location.href
 	p = pagina.split("/")
-	console.log("id: " + p[5])
-	return p[5]
+	console.log("Posição" + p[pos])
+	return p[pos]
 }
 
 //funcao para preencher os produtos

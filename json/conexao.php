@@ -3,8 +3,8 @@
 	// criar conexao com o banco
 
 	$servidor 	= "127.0.0.1";
-	$usuario 	= "admin";
-	$senha 		= "admin";
+	$usuario 	= "user";
+	$senha 		= "userpass";
 	$banco 		= "pwa";
 
 	try {
